@@ -1,6 +1,6 @@
 # Create a security group with inbound rules for ports 22, 80, 443, 8080, 9000, and 3000
-resource "aws_security_group" "my-sg-jenkins2" {
-  name        = "my-sg-jenkins2"
+resource "aws_security_group" "my-sg-jenkins3" {
+  name        = "my-sg-jenkins3"
   description = "Security Group for Jenkins"
 
  ingress = [
@@ -46,12 +46,12 @@ resource "local_file" "private_key" {
 resource "aws_instance" "web" {
   ami                    = "ami-0b6c2d49148000cd5"  # Replace with your desired AMI
   instance_type          = "t2.large"
-  vpc_security_group_ids = [aws_security_group.my-sg-jenkins2.id]
+  vpc_security_group_ids = [aws_security_group.my-sg-jenkins3.id]
   key_name               = aws_key_pair.key-pair.key_name
 
 
 tags = {
-  Name = "2048-Game"
+  Name = "pet-store"
 }
 root_block_device {
   volume_size = 30
